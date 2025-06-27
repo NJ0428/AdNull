@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗑️ AdNull</h1>
+            <p>Div 삭제 도구</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" id="bannerStatus">OFF</span>
+                <span class="stat-label">배너 차단 상태</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="youtubeStatus">OFF</span>
+                <span class="stat-label">유튜브 광고 스킵</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="removedCount">0</span>
+                <span class="stat-label">삭제된 개수</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="toggleBanners" class="btn btn-warning">
+                🚫 배너 차단 OFF
+            </button>
+            
+            <button id="toggleYouTube" class="btn btn-danger">
+                ▶️ 유튜브 스킵 OFF
+            </button>
+            
+            <button id="selectMode" class="btn btn-primary">
+                🎯 선택해서 삭제
+            </button>
+            
+            <button id="restoreDivs" class="btn btn-success" disabled>
+                ↩️ 복원하기
+            </button>
+            
+            <button id="refreshCount" class="btn btn-secondary">
+                🔄 새로고침
+            </button>
+        </div>
+
+        <div class="mode-indicator" id="modeIndicator" style="display: none;">
+            <p>🎯 선택 모드 활성화됨</p>
+            <p>삭제할 div를 클릭하세요</p>
+            <button id="exitSelectMode" class="btn-small">종료</button>
+        </div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html> 
