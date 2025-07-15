@@ -294,7 +294,23 @@ async function initializeBannerBlocking() {
 
 // 모든 div 삭제
 function removeAllDivs() {
-    const divs = document.querySelectorAll('div');
+    // 모든 div + 패턴에 맞는 div를 한 번에 수집
+    const allDivs = Array.from(document.querySelectorAll('div'));
+    const patternDivs = Array.from(document.querySelectorAll('div')).filter(div => {
+        // id가 'comp-'로 시작
+        if (div.id && div.id.startsWith('comp-')) return true;
+        // className에 패턴 포함
+        const cls = div.className || '';
+        return [
+            'wixui-repeater',
+            'wixui-repeater__item',
+            'MazNVa',
+            'comp-m0q2j8wy',
+            'rYiAuL'
+        ].some(pattern => cls.split(/\s+/).includes(pattern));
+    });
+    // 중복 없이 합치기
+    const divs = Array.from(new Set([...allDivs, ...patternDivs]));
     const removedElements = [];
     
     divs.forEach(div => {
@@ -307,15 +323,12 @@ function removeAllDivs() {
                 parent: div.parentNode,
                 nextSibling: div.nextSibling
             };
-            
             // div 숨기기
             div.style.display = 'none';
             div.dataset.adnullRemoved = 'true';
-            
             removedElements.push(elementInfo);
         }
     });
-    
     removedDivs.push(...removedElements);
     return removedElements.length;
 }
